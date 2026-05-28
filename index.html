@@ -207,7 +207,18 @@
         .card:hover .thumb img {
             transform: scale(1.05);
         }
+        
         .card .thumb .thumb-fallback {
+            position: absolute; inset: 0;
+            display: none; align-items: center; justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a3e, #2d1b4e, #1a1a3e);
+            color: var(--muted);
+            font-size: 0.9em;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.5;
+        }
             position: absolute; inset: 0;
             display: flex; align-items: center; justify-content: center;
             background: linear-gradient(135deg, #1a1a3e, #2a1a4e);
@@ -501,7 +512,7 @@
                 } else {
                     return `
                         <div class="card" data-index="${i}" onclick="playLocal('${v.file}')">
-                            <div class="thumb" style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);">
+                            <div class="thumb" style="background-image: url('cover_毕业生晚会.jpg'); background-size: cover; background-position: center;">
                                 <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
                             </div>
                             <div class="info">
