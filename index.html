@@ -61,11 +61,11 @@
             padding: 4px;
         }
         .lang-toggle button {
-            padding: 6px 14px;
-            border: none; border-radius: 7px;
+            padding: 8px 18px;
+            border: none; border-radius: 8px;
             background: transparent;
             color: var(--muted);
-            font-size: 0.8em;
+            font-size: 0.92em;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.25s;
@@ -325,8 +325,8 @@
 
     <!-- Language Toggle -->
     <div class="lang-toggle">
-        <button id="langZh" class="active" onclick="switchLang('zh')">中</button>
-        <button id="langJa" onclick="switchLang('ja')">日</button>
+        <button id="langZh" onclick="switchLang('zh')">中文</button>
+        <button id="langJa" class="active" onclick="switchLang('ja')">日本語</button>
     </div>
 
     <div class="container">
@@ -437,14 +437,14 @@
         const videoWorks = [
             { title: "传承五四精神，绽放青春力量", desc: "五四青年节宣传片，负责拍摄与剪辑", tools: ["Premiere Pro"], id: "6GWrrxtvVK8", type: "yt" },
             { title: "2022年运动会", desc: "大学运动会记录短片，多机位剪辑", tools: ["Premiere Pro"], id: "5Z7FpAIThg0", type: "yt" },
-            { title: "动漫社招新", desc: "动漫社团招新宣传视频，特效合成", tools: ["Premiere Pro", "After Effects"], id: "L4WFnDorh4c", type: "yt" },
+            { title: "毕业生晚会开场", desc: "大学毕业晚会开场视频，负责整体制作", tools: ["Premiere Pro", "After Effects"], file: "毕业生晚会开场.mp4", type: "local" },
             { title: "AMV-那不值得一提的热爱", desc: "动漫AMV剪辑作品，节奏踩点剪辑", tools: ["Premiere Pro", "After Effects"], id: "_LIAKBbnOzY", type: "yt" },
-            { title: "2022年blender建模练习", desc: "Blender 3D建模练习作品", tools: ["Blender"], id: "-ZTVErZBniA", type: "yt" },
+            { title: "漂亮女孩让我心碎", desc: "抖音风格短视频制作", tools: ["Premiere Pro"], id: "2CUA78aM5_I", type: "yt" },
             { title: "招新日常工作展示", desc: "新媒体部日常工作日常vlog", tools: ["Premiere Pro"], id: "Znz5rXqjgSE", type: "yt" },
             { title: "2021年大学动漫实景合成", desc: "实景拍摄与动漫元素合成特效", tools: ["After Effects"], id: "jm6bL2S6hcI", type: "yt" },
             { title: "2021年——转眼", desc: "毕业季/年终混剪短片", tools: ["Premiere Pro", "After Effects"], id: "Rv6h3NE35XM", type: "yt" },
-            { title: "漂亮女孩让我心碎", desc: "抖音风格短视频制作", tools: ["Premiere Pro"], id: "2CUA78aM5_I", type: "yt" },
-            { title: "毕业生晚会开场", desc: "大学毕业晚会开场视频，负责整体制作", tools: ["Premiere Pro", "After Effects"], file: "毕业生晚会开场.mp4", type: "local" },
+            { title: "2022年blender建模练习", desc: "Blender 3D建模练习作品", tools: ["Blender"], id: "-ZTVErZBniA", type: "yt" },
+            { title: "动漫社招新", desc: "动漫社团招新宣传视频，特效合成", tools: ["Premiere Pro", "After Effects"], id: "L4WFnDorh4c", type: "yt" },
         ];
 
         const videoJa = {
@@ -483,7 +483,7 @@
         };
 
         // ===================== LANG =====================
-        let currentLang = 'zh';
+        let currentLang = 'ja';
 
         const langStrings = {
             zh: {
@@ -624,8 +624,7 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
 
         // ===================== INIT =====================
-        render();
-        initScrollAnimation();
+        switchLang('ja');
     </script>
 </body>
 </html>
