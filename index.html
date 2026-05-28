@@ -5,198 +5,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZHAO HAO | 作品集</title>
     <style>
-        /* ============================
-               Reset & Variables
-            ============================ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
-            --bg: #0b0b12;
-            --bg2: #11111d;
-            --card-bg: rgba(26, 26, 42, 0.55);
-            --card-border: rgba(108, 140, 255, 0.08);
+            --bg: #0b0b14;
+            --card: rgba(22, 22, 40, 0.6);
+            --border: rgba(108, 140, 255, 0.1);
             --accent: #6c8cff;
             --accent2: #a78bfa;
-            --accent-glow: rgba(108, 140, 255, 0.15);
+            --pink: #f472b6;
             --text: #e8e8f0;
             --muted: #8888aa;
             --radius: 16px;
         }
-
         body {
-            font-family: -apple-system, 'Helvetica Neue', 'Noto Sans SC', system-ui, sans-serif;
+            font-family: -apple-system, 'Helvetica Neue', 'Noto Sans SC', 'Noto Sans JP', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* ============================
-               Animated Background
-            ============================ */
+        /* ========== Animated BG ========== */
         .bg-glow {
-            position: fixed; top: -40%; left: -20%;
-            width: 140%; height: 140%;
-            z-index: 0;
-            pointer-events: none;
+            position: fixed; top: -50%; left: -30%;
+            width: 160%; height: 160%;
+            z-index: 0; pointer-events: none;
             overflow: hidden;
         }
         .bg-glow .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.12;
-            animation: orbFloat 18s ease-in-out infinite alternate;
+            position: absolute; border-radius: 50%;
+            filter: blur(120px); opacity: 0.1;
+            animation: orbFloat 20s ease-in-out infinite alternate;
         }
-        .bg-glow .orb:nth-child(1) {
-            width: 600px; height: 600px;
-            background: #6c8cff;
-            top: 10%; left: 5%;
-            animation-duration: 22s;
-        }
-        .bg-glow .orb:nth-child(2) {
-            width: 500px; height: 500px;
-            background: #a78bfa;
-            bottom: 5%; right: 0%;
-            animation-duration: 18s;
-            animation-delay: -6s;
-        }
-        .bg-glow .orb:nth-child(3) {
-            width: 400px; height: 400px;
-            background: #f472b6;
-            top: 40%; left: 50%;
-            animation-duration: 20s;
-            animation-delay: -12s;
-            opacity: 0.07;
-        }
+        .bg-glow .orb:nth-child(1) { width: 700px; height: 700px; background: #6c8cff; top: 5%; left: 0; animation-duration: 22s; }
+        .bg-glow .orb:nth-child(2) { width: 550px; height: 550px; background: #a78bfa; bottom: 0; right: 0; animation-duration: 18s; animation-delay: -7s; }
+        .bg-glow .orb:nth-child(3) { width: 400px; height: 400px; background: #f472b6; top: 40%; left: 45%; animation-duration: 24s; animation-delay: -14s; opacity: 0.06; }
         @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(60px, -40px) scale(1.1); }
-            66% { transform: translate(-30px, 50px) scale(0.95); }
-            100% { transform: translate(40px, -20px) scale(1.05); }
+            0% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(70px,-50px) scale(1.12); }
+            66% { transform: translate(-40px,60px) scale(0.92); }
+            100% { transform: translate(50px,-30px) scale(1.06); }
         }
 
-        /* ============================
-               Layout
-            ============================ */
-        .container {
-            position: relative; z-index: 1;
-            max-width: 1000px; margin: 0 auto; padding: 40px 24px;
+        .container { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
+
+        /* ========== Language Toggle ========== */
+        .lang-toggle {
+            position: fixed; top: 20px; right: 20px;
+            z-index: 100;
+            display: flex; gap: 4px;
+            background: rgba(22,22,44,0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(108,140,255,0.15);
+            border-radius: 10px;
+            padding: 4px;
+        }
+        .lang-toggle button {
+            padding: 6px 14px;
+            border: none; border-radius: 7px;
+            background: transparent;
+            color: var(--muted);
+            font-size: 0.8em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .lang-toggle button.active {
+            background: rgba(108,140,255,0.2);
+            color: var(--accent);
+        }
+        .lang-toggle button:hover:not(.active) {
+            color: var(--text);
         }
 
-        /* ============================
-               Header
-            ============================ */
+        /* ========== Header ========== */
         header {
-            text-align: center;
-            padding: 70px 0 20px;
-            opacity: 0;
-            transform: translateY(20px);
+            text-align: center; padding: 50px 0 10px;
+            opacity: 0; transform: translateY(20px);
             animation: fadeUp 0.8s ease forwards;
         }
+        header .logo {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--pink));
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8em; font-weight: 700; color: #fff;
+            box-shadow: 0 0 40px rgba(108,140,255,0.3);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(108,140,255,0.3); }
+            50% { box-shadow: 0 0 60px rgba(108,140,255,0.5), 0 0 80px rgba(167,139,250,0.2); }
+        }
         header h1 {
-            font-size: 2.6em;
-            font-weight: 700;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.6em; font-weight: 700; letter-spacing: 4px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--pink) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
             display: inline-block;
         }
-        header .sub {
-            color: var(--muted);
-            margin-top: 10px;
-            font-size: 0.95em;
-            letter-spacing: 1px;
-        }
+        header .sub { color: var(--muted); margin-top: 10px; font-size: 0.95em; letter-spacing: 1px; }
         header .sub em { color: var(--accent); font-style: normal; }
-        header .tags {
-            margin-top: 20px;
-            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+
+        /* ========== Tags ========== */
+        .tags {
+            display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+            margin: 24px 0;
         }
-        header .tags span {
-            padding: 6px 18px;
-            border-radius: 20px;
+        .tags .tag {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 18px 8px 14px;
+            border-radius: 100px;
             font-size: 0.82em;
-            background: rgba(108, 140, 255, 0.08);
-            border: 1px solid rgba(108, 140, 255, 0.15);
-            color: var(--accent);
+            background: rgba(22,22,44,0.7);
+            border: 1px solid rgba(108,140,255,0.12);
+            color: var(--text);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+            cursor: default;
+        }
+        .tags .tag:hover {
+            transform: translateY(-4px);
+            border-color: rgba(108,140,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .tags .tag svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+        /* ========== Tool Proficiency ========== */
+        .tools-section {
+            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+            margin: 30px 0 10px;
+        }
+        .tools-section .tool-item {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .tools-section .tool-item:hover { transform: translateY(-5px); }
+        .tools-section .tool-item .icon-wrap {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 6px;
             transition: all 0.3s;
         }
-        header .tags span:hover {
-            background: rgba(108, 140, 255, 0.18);
-            border-color: rgba(108, 140, 255, 0.3);
-            transform: translateY(-2px);
-        }
+        .tools-section .tool-item .icon-wrap svg { width: 28px; height: 28px; }
+        .tools-section .tool-item .label { font-size: 0.72em; color: var(--muted); }
 
-        /* ============================
-               Section Title
-            ============================ */
-        .section-title {
-            display: flex; align-items: center; gap: 12px;
-            font-size: 1.1em; font-weight: 600;
-            margin: 56px 0 24px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(108, 140, 255, 0.08);
-        }
-
-        /* ============================
-               Hint Banner
-            ============================ */
+        /* ========== Hint Banner ========== */
         .hint-banner {
-            text-align: center;
-            padding: 12px;
-            margin-bottom: 8px;
-            font-size: 0.85em;
-            color: var(--muted);
-            background: rgba(108, 140, 255, 0.04);
-            border: 1px dashed rgba(108, 140, 255, 0.12);
+            text-align: center; padding: 12px;
+            font-size: 0.82em; color: var(--muted);
+            background: rgba(108,140,255,0.04);
+            border: 1px dashed rgba(108,140,255,0.12);
             border-radius: 10px;
             letter-spacing: 1px;
+            margin: 8px 0 12px;
         }
 
-        /* ============================
-               Card Grid
-            ============================ */
+        /* ========== Section Title ========== */
+        .section-title {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 1.05em; font-weight: 600;
+            margin: 48px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(108,140,255,0.08);
+        }
+        .section-title .line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(108,140,255,0.25), transparent); }
+
+        /* ========== Grid ========== */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            gap: 22px;
         }
 
-        /* ============================
-               Card
-            ============================ */
+        /* ========== Card ========== */
         .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
+            background: var(--card);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
             cursor: pointer;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            opacity: 0; transform: translateY(30px);
+            transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
         }
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover {
             transform: translateY(-6px) scale(1.01);
-            border-color: rgba(108, 140, 255, 0.2);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-glow);
+            border-color: rgba(108,140,255,0.2);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 30px rgba(108,140,255,0.15);
         }
 
-        /* Thumbnail */
         .card .thumb {
             width: 100%; aspect-ratio: 16/9;
-            position: relative;
-            display: flex; align-items: center; justify-content: center;
+            position: relative; display: flex;
+            align-items: center; justify-content: center;
             overflow: hidden;
-            background: #151528;
+            background: #15152a;
         }
         .card .thumb img {
             position: absolute; inset: 0;
@@ -204,206 +208,112 @@
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .card:hover .thumb img {
-            transform: scale(1.05);
-        }
-        
+        .card:hover .thumb img { transform: scale(1.06); }
         .card .thumb .thumb-fallback {
             position: absolute; inset: 0;
             display: none; align-items: center; justify-content: center;
-            padding: 20px;
+            padding: 24px;
             background: linear-gradient(135deg, #1a1a3e, #2d1b4e, #1a1a3e);
             color: var(--muted);
-            font-size: 0.9em;
-            text-align: center;
-            font-weight: 500;
-            line-height: 1.5;
-        }
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #1a1a3e, #2a1a4e);
-            color: var(--muted);
-            font-size: 0.85em;
+            font-size: 0.9em; text-align: center;
+            font-weight: 500; line-height: 1.5;
         }
         .card .thumb .play-btn {
             width: 56px; height: 56px;
             border-radius: 50%;
-            background: rgba(108, 140, 255, 0.95);
+            background: rgba(108,140,255,0.95);
             border: 2px solid rgba(255,255,255,0.15);
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             position: relative; z-index: 2;
-            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 0 20px rgba(108, 140, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+            box-shadow: 0 0 20px rgba(108,140,255,0.3);
         }
-        .card:hover .play-btn {
-            transform: scale(1.12);
-            box-shadow: 0 0 40px rgba(108, 140, 255, 0.5);
-        }
-        .card .play-btn svg {
-            width: 24px; height: 24px;
-            fill: #fff;
-            margin-left: 3px;
-        }
+        .card:hover .play-btn { transform: scale(1.12); box-shadow: 0 0 40px rgba(108,140,255,0.5); }
+        .card .play-btn svg { width: 24px; height: 24px; fill: #fff; margin-left: 3px; }
 
-        /* Card Info */
-        .card .info {
-            padding: 16px 18px 20px;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2));
-        }
-        .card .info h3 {
-            font-size: 0.95em; font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text);
-        }
-        .card .info p {
-            font-size: 0.8em;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-        .card .info .tools {
-            margin-top: 10px;
-            display: flex; flex-wrap: wrap; gap: 6px;
-        }
+        .card .info { padding: 16px 18px 20px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.15)); }
+        .card .info h3 { font-size: 0.95em; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+        .card .info p { font-size: 0.8em; color: var(--muted); line-height: 1.6; }
+        .card .info .tools { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
         .card .info .tools span {
-            font-size: 0.72em;
-            padding: 3px 12px;
-            border-radius: 12px;
-            background: rgba(108, 140, 255, 0.1);
-            color: var(--accent);
-            border: 1px solid rgba(108, 140, 255, 0.1);
-        }
-        .card .info .badge {
-            font-size: 0.68em;
-            margin-top: 8px;
+            font-size: 0.7em; padding: 3px 12px; border-radius: 12px;
+            background: rgba(108,140,255,0.1); color: var(--accent);
+            border: 1px solid rgba(108,140,255,0.1);
             display: inline-flex; align-items: center; gap: 4px;
         }
-        .card .info .badge.yt {
-            color: #ff6b6b;
+        .card .info .tools span svg { width: 12px; height: 12px; }
+        .card .info .badge {
+            font-size: 0.68em; margin-top: 8px;
+            display: inline-flex; align-items: center; gap: 4px;
         }
-        .card .info .badge.yt::before {
-            content: "";
-            display: inline-block;
-            width: 14px; height: 14px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b6b'%3E%3Cpath d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/%3E%3C/svg%3E") no-repeat center;
-            background-size: contain;
-        }
-        .card .info .badge.local {
-            color: #4caf50;
-        }
-        .card .info .badge.local::before {
-            content: "▶";
-            font-size: 0.9em;
-        }
+        .card .info .badge.yt { color: #ff6b6b; }
+        .card .info .badge.yt svg { width: 14px; height: 14px; fill: #ff6b6b; }
+        .card .info .badge.yt span { color: #ff6b6b; }
+        .card .info .badge.local { color: #4caf50; }
+        .card .info .badge.local span { color: #4caf50; }
 
-        /* ============================
-               Video Overlay (Fullscreen)
-            ============================ */
+        /* ========== Overlay ========== */
         .overlay {
-            display: none;
-            position: fixed; z-index: 999;
+            display: none; position: fixed; z-index: 999;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0,0,0,0.95);
             align-items: center; justify-content: center;
             backdrop-filter: blur(10px);
         }
         .overlay.active { display: flex; }
-        .overlay-content {
-            position: relative;
-            width: 92%; max-width: 900px;
-            animation: fadeIn 0.3s ease;
-        }
-        .overlay-content video {
-            width: 100%;
-            border-radius: 12px;
-            outline: none;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-        }
+        .overlay-content { position: relative; width: 92%; max-width: 900px; animation: fadeIn 0.3s ease; }
+        .overlay-content video { width: 100%; border-radius: 12px; outline: none; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
         .overlay-controls {
             display: flex; align-items: center; gap: 16px;
-            margin-top: 14px;
-            justify-content: center;
+            margin-top: 14px; justify-content: center;
         }
         .overlay-controls button {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.2s;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 8px 20px; border-radius: 8px; cursor: pointer;
+            font-size: 0.85em; transition: all 0.2s;
             display: flex; align-items: center; gap: 6px;
         }
-        .overlay-controls button:hover {
-            background: rgba(255,255,255,0.15);
-        }
+        .overlay-controls button:hover { background: rgba(255,255,255,0.15); }
         .overlay .close {
-            position: absolute;
-            top: -44px; right: 0;
-            color: rgba(255,255,255,0.6);
-            font-size: 30px; cursor: pointer;
-            background: none; border: none;
-            transition: color 0.2s;
-            line-height: 1;
+            position: absolute; top: -44px; right: 0;
+            color: rgba(255,255,255,0.6); font-size: 30px; cursor: pointer;
+            background: none; border: none; transition: color 0.2s; line-height: 1;
         }
         .overlay .close:hover { color: #fff; }
 
-        /* ============================
-               Contact
-            ============================ */
+        /* ========== Contact ========== */
         .contact {
-            text-align: center;
-            padding: 50px 0 30px;
-            border-top: 1px solid rgba(108, 140, 255, 0.08);
+            text-align: center; padding: 40px 0 20px;
+            border-top: 1px solid rgba(108,140,255,0.08);
             margin-top: 60px;
-            opacity: 0;
-            transform: translateY(15px);
         }
-        .contact.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease;
-        }
-        .contact p {
-            color: var(--muted);
-            font-size: 0.88em;
-            margin-bottom: 4px;
-        }
-        .contact a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+        .contact p { color: var(--muted); font-size: 0.88em; margin-bottom: 4px; }
+        .contact a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
         .contact a:hover { color: var(--accent2); }
+        .contact .social-links { display: flex; justify-content: center; gap: 16px; margin-top: 16px; }
+        .contact .social-links a {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: rgba(108,140,255,0.06); border: 1px solid rgba(108,140,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+        }
+        .contact .social-links a:hover { background: rgba(108,140,255,0.15); transform: translateY(-3px); }
+        .contact .social-links a svg { width: 20px; height: 20px; fill: var(--muted); }
 
-        /* ============================
-               Scrollbar
-            ============================ */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* ============================
-               Animations
-            ============================ */
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
 
-        /* ============================
-               Responsive
-            ============================ */
         @media (max-width: 640px) {
             header h1 { font-size: 1.8em; }
             .grid { grid-template-columns: 1fr; gap: 18px; }
             .container { padding: 20px 16px; }
-            .overlay-content { width: 96%; }
+            .tools-section { gap: 16px; }
         }
         @media (min-width: 641px) and (max-width: 900px) {
             .grid { grid-template-columns: repeat(2, 1fr); }
@@ -411,66 +321,119 @@
     </style>
 </head>
 <body>
+    <div class="bg-glow"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 
-    <!-- ===== Animated Background Orbs ===== -->
-    <div class="bg-glow">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button id="langZh" class="active" onclick="switchLang('zh')">中</button>
+        <button id="langJa" onclick="switchLang('ja')">日</button>
     </div>
 
-    <!-- ===== Main Container ===== -->
     <div class="container">
-
-        <!-- Header -->
         <header>
-            <h1>ZHAO HAO 作品集</h1>
-            <p class="sub"><em>ZHAO HAO</em> &nbsp;·&nbsp; 视频制作 / SNS运营 / AI创作</p>
+            <div class="logo">ZH</div>
+            <h1 id="title">ZHAO HAO 作品集</h1>
+            <p class="sub"><em>ZHAO HAO</em> &nbsp;·&nbsp; <span id="subtitle">视频制作 / SNS运营 / AI创作</span></p>
+
+            <!-- Software Icon Tags -->
             <div class="tags">
-                <span>Premiere Pro</span>
-                <span>After Effects</span>
-                <span>Blender</span>
-                <span>Claude</span>
-                <span>小红书</span>
-                <span>抖音</span>
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3" fill="none" stroke="#e485f0" stroke-width="1.5"/><path d="M8 8h8M8 12h6M8 16h4" stroke="#e485f0" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    Premiere Pro
+                </div>
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" fill="none" stroke="#7db8ff" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="#7db8ff" stroke-width="1.5"/><path d="M12 8v4l2 2" stroke="#7db8ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    After Effects
+                </div>
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" fill="none" stroke="#f9a05a" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="#f9a05a" stroke-width="1.5"/><path d="M12 9v6M9 12h6" stroke="#f9a05a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    Blender
+                </div>
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#6c8cff" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#6c8cff" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    Claude
+                </div>
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="#ff6b6b" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="#ff6b6b" stroke-width="1.5"/><path d="M16 8l4-4M8 16l-4 4" stroke="#ff6b6b" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    抖音
+                </div>
+                <div class="tag">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none" stroke="#ff4d4d" stroke-width="1.5"/><path d="M8 8h8M8 12h6M8 16h4" stroke="#ff4d4d" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    小红书
+                </div>
+            </div>
+
+            <!-- Tool Proficiency -->
+            <div class="tools-section">
+                <div class="tool-item">
+                    <div class="icon-wrap" style="background:rgba(228,133,240,0.15);">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3" fill="none" stroke="#e485f0" stroke-width="1.8"/><path d="M8 8h8M8 12h6M8 16h4" stroke="#e485f0" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="label">Premiere Pro</div>
+                </div>
+                <div class="tool-item">
+                    <div class="icon-wrap" style="background:rgba(125,184,255,0.15);">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" fill="none" stroke="#7db8ff" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="#7db8ff" stroke-width="1.8"/><path d="M12 8v4l2 2" stroke="#7db8ff" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="label">After Effects</div>
+                </div>
+                <div class="tool-item">
+                    <div class="icon-wrap" style="background:rgba(249,160,90,0.15);">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" fill="none" stroke="#f9a05a" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="#f9a05a" stroke-width="1.8"/><path d="M12 9v6M9 12h6" stroke="#f9a05a" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="label">Blender</div>
+                </div>
+                <div class="tool-item">
+                    <div class="icon-wrap" style="background:rgba(108,140,255,0.15);">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#6c8cff" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="#6c8cff" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="label" id="labelAI">AI 创作</div>
+                </div>
+                <div class="tool-item">
+                    <div class="icon-wrap" style="background:rgba(108,140,255,0.1);border:1px solid rgba(108,140,255,0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#6c8cff" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="label" id="labelSNS">SNS 运营</div>
+                </div>
             </div>
         </header>
 
-        <!-- Video Works -->
-        <div class="section-title">🎬 视频作品</div>
-        <div class="hint-banner">更多作品请私信联系</div>
+        <div class="section-title">🎬 <span id="sectionVideo">视频作品</span> <span class="line"></span></div>
+        <div class="hint-banner" id="hintBanner">更多作品请私信联系 • 点击卡片观看</div>
         <div class="grid" id="videoGrid"></div>
 
-        <!-- Contact -->
-        <div class="contact" id="contactSection">
+        <div class="contact">
             <p>📧 <a href="mailto:haozhao421@gmail.com">haozhao421@gmail.com</a></p>
             <p>📱 080-5678-0929</p>
-            <p style="margin-top:14px; font-size:0.78em; color:#555;">更多作品请私信联系</p>
+            <div class="social-links">
+                <a href="https://youtube.com/@yourchannel" target="_blank" title="YouTube">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="mailto:haozhao421@gmail.com" title="Email">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+            </div>
+            <p style="margin-top:14px; font-size:0.78em; color:#555;" id="footerText">更多作品请私信联系</p>
         </div>
     </div>
 
-    <!-- ===== Video Overlay ===== -->
     <div class="overlay" id="videoOverlay">
         <div class="overlay-content">
             <button class="close" onclick="closeOverlay()">&times;</button>
             <video id="localPlayer" controls playsinline></video>
             <div class="overlay-controls">
                 <button onclick="toggleFullscreen()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-                    全屏播放
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg> <span id="btnFullscreen">全屏</span>
                 </button>
                 <button onclick="closeOverlay()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-                    关闭
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg> <span id="btnClose">关闭</span>
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // =============================================
-        //  DATA
-        // =============================================
+        // ===================== DATA =====================
         const videoWorks = [
             { title: "传承五四精神，绽放青春力量", desc: "五四青年节宣传片，负责拍摄与剪辑", tools: ["Premiere Pro"], id: "6GWrrxtvVK8", type: "yt" },
             { title: "2022年运动会", desc: "大学运动会记录短片，多机位剪辑", tools: ["Premiere Pro"], id: "5Z7FpAIThg0", type: "yt" },
@@ -484,29 +447,111 @@
             { title: "毕业生晚会开场", desc: "大学毕业晚会开场视频，负责整体制作", tools: ["Premiere Pro", "After Effects"], file: "毕业生晚会开场.mp4", type: "local" },
         ];
 
-        // =============================================
-        //  RENDER
-        // =============================================
+        const videoJa = {
+            "传承五四精神，绽放青春力量": "五四精神を受け継ぎ、青春の力を咲かせる",
+            "2022年运动会": "2022年 運動会",
+            "动漫社招新": "アニメ部 新歓PV",
+            "AMV-那不值得一提的热爱": "AMV - 取るに足らない情熱",
+            "2022年blender建模练习": "2022年 Blender モデリング練習",
+            "招新日常工作展示": "新歓・日常業務紹介",
+            "2021年大学动漫实景合成": "2021年 大学アニメ実景合成",
+            "2021年——转眼": "2021年——あっという間に",
+            "漂亮女孩让我心碎": "可愛い子に心が砕けた",
+            "毕业生晚会开场": "卒業パーティー オープニング",
+            "五四青年节宣传片，负责拍摄与剪辑": "五四青年節の宣伝動画。撮影・編集担当",
+            "大学运动会记录短片，多机位剪辑": "大学運動会記録。マルチカメラ編集",
+            "动漫社团招新宣传视频，特效合成": "アニメ部の新歓PV。特殊効果合成",
+            "动漫AMV剪辑作品，节奏踩点剪辑": "アニメAMV。リズムに合わせた編集",
+            "Blender 3D建模练习作品": "Blender 3Dモデリング練習作品",
+            "新媒体部日常工作日常vlog": "新メディア部の日常vlog",
+            "实景拍摄与动漫元素合成特效": "実景撮影とアニメ要素の合成特效",
+            "毕业季/年终混剪短片": "卒業シーズン／年末ダイジェスト",
+            "抖音风格短视频制作": "TikTok風ショート動画制作",
+            "大学毕业晚会开场视频，负责整体制作": "大学卒業パーティーOP。全体的な制作担当",
+        };
+
+        const toolNamesJa = {
+            "Premiere Pro": "Premiere Pro",
+            "After Effects": "After Effects",
+            "Blender": "Blender",
+        };
+
+        const toolLabelsJa = {
+            "Premiere Pro": "Premiere Pro",
+            "After Effects": "After Effects",
+            "Blender": "Blender",
+        };
+
+        // ===================== LANG =====================
+        let currentLang = 'zh';
+
+        const langStrings = {
+            zh: {
+                title: "ZHAO HAO 作品集",
+                subtitle: "视频制作 / SNS运营 / AI创作",
+                labelAI: "AI 创作",
+                labelSNS: "SNS 运营",
+                sectionVideo: "视频作品",
+                hint: "更多作品请私信联系 • 点击卡片观看",
+                footer: "更多作品请私信联系",
+                badgeYT: "YouTube で見る",
+                badgeLocal: "再生する",
+                btnFullscreen: "全屏",
+                btnClose: "关闭",
+            },
+            ja: {
+                title: "ZHAO HAO ポートフォリオ",
+                subtitle: "動画制作 / SNS運用 / AI制作",
+                labelAI: "AI制作",
+                labelSNS: "SNS運用",
+                sectionVideo: "動画作品",
+                hint: "他の作品はお問い合わせください • カードをクリック",
+                footer: "他の作品はお問い合わせください",
+                badgeYT: "YouTube で見る",
+                badgeLocal: "再生する",
+                btnFullscreen: "全画面",
+                btnClose: "閉じる",
+            }
+        };
+
+        // ===================== RENDER =====================
         function render() {
+            const lang = langStrings[currentLang];
             const c = document.getElementById('videoGrid');
             c.innerHTML = videoWorks.map((v, i) => {
+                const tJa = videoJa;
+                const title = currentLang === 'ja' && tJa[v.title] ? tJa[v.title] : v.title;
+                const desc = currentLang === 'ja' && tJa[v.desc] ? tJa[v.desc] : v.desc;
+
+                const iconMap = {
+                    'Premiere Pro': '<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3" fill="none" stroke="#e485f0" stroke-width="1.5"/><path d="M8 8h8M8 12h6M8 16h4" stroke="#e485f0" stroke-width="1.5" stroke-linecap="round"/></svg>',
+                    'After Effects': '<svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" fill="none" stroke="#7db8ff" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="#7db8ff" stroke-width="1.5"/><path d="M12 8v4l2 2" stroke="#7db8ff" stroke-width="1.5" stroke-linecap="round"/></svg>',
+                    'Blender': '<svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z" fill="none" stroke="#f9a05a" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="#f9a05a" stroke-width="1.5"/><path d="M12 9v6M9 12h6" stroke="#f9a05a" stroke-width="1.5" stroke-linecap="round"/></svg>',
+                };
+
+                const badgeContent = v.type === "yt"
+                    ? `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>${lang.badgeYT}</span>`
+                    : `<span style="color:#4caf50;">▶</span><span>${lang.badgeLocal}</span>`;
+
+                const toolsHtml = v.tools.map(t => {
+                    return (iconMap[t] || '') + t;
+                }).join('');
+
                 if (v.type === "yt") {
                     return `
                         <div class="card" data-index="${i}" onclick="window.open('https://youtu.be/${v.id}','_blank')">
                             <div class="thumb">
                                 <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg"
                                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                                     alt="${v.title}">
-                                <div class="thumb-fallback" style="display:none;">
-                                    <span>${v.title}</span>
-                                </div>
+                                     alt="${title}">
+                                <div class="thumb-fallback" style="display:none;"><span>${title}</span></div>
                                 <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
                             </div>
                             <div class="info">
-                                <h3>${v.title}</h3>
-                                <p>${v.desc}</p>
-                                <div class="tools">${v.tools.map(t => `<span>${t}</span>`).join('')}</div>
-                                <div class="badge yt"></div>
+                                <h3 class="video-title">${title}</h3>
+                                <p>${desc}</p>
+                                <div class="tools">${toolsHtml}</div>
+                                <div class="badge yt">${badgeContent}</div>
                             </div>
                         </div>`;
                 } else {
@@ -516,85 +561,73 @@
                                 <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
                             </div>
                             <div class="info">
-                                <h3>${v.title}</h3>
-                                <p>${v.desc}</p>
-                                <div class="tools">${v.tools.map(t => `<span>${t}</span>`).join('')}</div>
-                                <div class="badge local"></div>
+                                <h3 class="video-title">${title}</h3>
+                                <p>${desc}</p>
+                                <div class="tools">${toolsHtml}</div>
+                                <div class="badge local">${badgeContent}</div>
                             </div>
                         </div>`;
                 }
             }).join('');
         }
 
-        // =============================================
-        //  SCROLL ANIMATION (Intersection Observer)
-        // =============================================
+        // ===================== LANG SWITCH =====================
+        function switchLang(lang) {
+            currentLang = lang;
+            const s = langStrings[lang];
+
+            document.getElementById('langZh').className = lang === 'zh' ? 'active' : '';
+            document.getElementById('langJa').className = lang === 'ja' ? 'active' : '';
+
+            document.getElementById('title').textContent = s.title;
+            document.getElementById('subtitle').textContent = s.subtitle;
+            document.getElementById('labelAI').textContent = s.labelAI;
+            document.getElementById('labelSNS').textContent = s.labelSNS;
+            document.getElementById('sectionVideo').textContent = s.sectionVideo;
+            document.getElementById('hintBanner').textContent = s.hint;
+            document.getElementById('footerText').textContent = s.footer;
+            document.getElementById('btnFullscreen').textContent = s.btnFullscreen;
+            document.getElementById('btnClose').textContent = s.btnClose;
+
+            // Re-render cards with new language
+            render();
+            // Re-run scroll animation
+            initScrollAnimation();
+        }
+
+        // ===================== SCROLL ANIMATION =====================
         function initScrollAnimation() {
-            const cards = document.querySelectorAll('.card');
-            const contact = document.getElementById('contactSection');
-
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
             }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-            cards.forEach((card, i) => {
+            document.querySelectorAll('.card').forEach((card, i) => {
+                card.classList.remove('visible');
                 card.style.transitionDelay = `${i * 0.06}s`;
                 observer.observe(card);
             });
-
-            if (contact) {
-                const contactObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, { threshold: 0.2 });
-                contactObserver.observe(contact);
-            }
         }
 
-        // =============================================
-        //  VIDEO OVERLAY
-        // =============================================
+        // ===================== VIDEO OVERLAY =====================
         function playLocal(file) {
             const player = document.getElementById('localPlayer');
             player.src = file;
             document.getElementById('videoOverlay').classList.add('active');
             player.play();
         }
-
         function closeOverlay() {
             const player = document.getElementById('localPlayer');
-            player.pause();
-            player.src = '';
+            player.pause(); player.src = '';
             document.getElementById('videoOverlay').classList.remove('active');
         }
-
         function toggleFullscreen() {
             const player = document.getElementById('localPlayer');
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            } else {
-                player.requestFullscreen?.() || player.webkitRequestFullscreen?.();
-            }
+            if (document.fullscreenElement) document.exitFullscreen();
+            else player.requestFullscreen?.() || player.webkitRequestFullscreen?.();
         }
+        document.getElementById('videoOverlay').addEventListener('click', function(e) { if (e.target === this) closeOverlay(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
 
-        document.getElementById('videoOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeOverlay();
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeOverlay();
-        });
-
-        // =============================================
-        //  INIT
-        // =============================================
+        // ===================== INIT =====================
         render();
         initScrollAnimation();
     </script>
